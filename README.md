@@ -1,5 +1,15 @@
 # dsh-interrupted-resume
 
+> ⚠️ **已归档（2026-10-23）——请改用 [HsiangNianian/dsh-auto-continue](https://github.com/HsiangNianian/dsh-auto-continue)**
+>
+> 本插件与 `dsh-auto-continue` 功能重叠，且对方更成熟，按插件市场的
+> 「**不是先来后到，是谁更好**」判据，本项目不再维护、不投稿商店。
+>
+> **不要同时安装两者**：都会在重启后注入「继续」，会造成重复续跑。
+>
+> 归档前最后的版本：**v0.2.4**：dsh1、dsh2 两实例实跑验证通过；
+> gitea、GitHub、npm 均有发布。代码与全部修复记录保留，仅供研究参考。
+
 > DSH 重启后，自动给「被强制中断」的会话发一条安全的继续指令。
 
 ## 解决什么问题
