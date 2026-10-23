@@ -1,0 +1,46 @@
+{
+  "name": "dsh-interrupted-resume",
+  "version": "0.1.0",
+  "description": "DSH crash-recovery companion: after a restart, detect sessions whose last turn was force-interrupted and re-inject a safe \"continue\" prompt (with state-verification instructions).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "dsh": ">=0.1.0",
+    "node": ">=20.0.0"
+  },
+  "dsh": {
+    "runtime": "host",
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "tools",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "cordis",
+    "plugin",
+    "session",
+    "resume",
+    "crash-recovery"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptrel1/dsh-interrupted-resume.git"
+  },
+  "homepage": "https://github.com/ptrel1/dsh-interrupted-resume",
+  "bugs": {
+    "url": "https://github.com/ptrel1/dsh-interrupted-resume/issues"
+  }
+}

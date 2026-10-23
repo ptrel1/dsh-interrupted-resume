@@ -1,0 +1,6 @@
+# dsh-interrupted-resume bundle patch layer: declares the plugin's own
+# loader entry so that `dsh plugin add` / sync.sh can install it into the
+# profile roster. Host-only plugin: no client half.
+- insert:
+    - id: interrupted-resume
+      name: 'dsh-interrupted-resume'
