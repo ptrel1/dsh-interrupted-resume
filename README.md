@@ -15,7 +15,7 @@ dsh 被重启 / 崩溃 / 强杀时，正在跑的 turn 会被中断。重启后�
 |---|---|---|
 | 1 | 最近 **12 小时**内有过人类提示词 | 避免唤醒陈年会话 |
 | 2 | 最后一条 `turn/end.reason.kind === "interrupted"` | **只认崩溃中断**；`aborted` 是用户主动停止，绝不续 |
-| 3 | 距中断 **≥ 2 分钟**（`quietMs`） | 避开用户重启后立刻打开的会话，防 `writer-held` 竞争 |
+| 3 | 距中断 **≥ 30 秒**（`quietMs`） | 避开用户重启后立刻打开的会话，防 `writer-held` 竞争 |
 | 4 | 本会话自动续 **< 2 次** | 防模型反复中断时 token 空转 |
 
 > ⚠️ 条件 3 **不是放弃**，而是延后：到点后由调度器重排再扫一轮。
@@ -47,8 +47,8 @@ dsh plugin --profile web add dsh-interrupted-resume   # 或本地路径
 ```js
 {
   promptWindowMs: 12 * 60 * 60 * 1000,  // 候选窗口
-  startupDelayMs: 10_000,              // 启动后延迟多久开始扫
-  quietMs: 2 * 60 * 1000,              // 中断后静置多久才续
+  startupDelayMs: 5_000,               // 启动后延迟多久开始扫
+  quietMs: 30 * 1000,                  // 中断后静置多久才续
   maxAttemptsPerSession: 2,            // 每会话最多自动续几次
   enabled: true,
   dryRun: false,                       // true = 只记日志不注入
@@ -68,7 +68,7 @@ $DSH_HOME/interrupted-resume/
 典型日志：
 
 ```
-defer session-xxx: interrupted 113s ago (< quietMs 120s), will retry in 7s
+defer session-xxx: interrupted 12s ago (< quietMs 30s), will retry in 18s
 scan done: 1 sessions, 1 in window, 0 resumed, 1 deferred
 resumed session-xxx: turn 1, attempt 1
 scan done: 1 sessions, 1 in window, 1 resumed
