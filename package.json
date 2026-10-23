@@ -1,6 +1,6 @@
 {
   "name": "dsh-interrupted-resume",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "DSH crash-recovery companion: after a restart, detect sessions whose last turn was force-interrupted and re-inject a safe \"continue\" prompt (with state-verification instructions).",
   "type": "module",
   "main": "lib/index.js",
