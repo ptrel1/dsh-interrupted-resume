@@ -1,11 +1,12 @@
 {
   "name": "dsh-interrupted-resume",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "DSH crash-recovery companion: after a restart, detect sessions whose last turn was force-interrupted and re-inject a safe \"continue\" prompt (with state-verification instructions).",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./client": "./lib/client.js",
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
@@ -17,6 +18,10 @@
     "runtime": "host",
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": ["slots", "locale"]
     }
   },
   "files": [
